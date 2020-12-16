@@ -1,5 +1,7 @@
 package com.bridgelabz.helloworld.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,16 +20,18 @@ public class HelloRestController
 {
 	//uc1
 	@RequestMapping(value = {"","/","/home"})
-	public String sayHello()
+	public ResponseEntity<String> sayHello()
 	{
-		return "Hello from Bridgelabz";
+		return new ResponseEntity<String>("Hello from Bridgelabz", HttpStatus.OK);
+		//return "Hello from Bridgelabz";
 	}
 	
 	//uc2
 	@RequestMapping(value = {"/query"}, method = RequestMethod.GET)
-	public String sayHello(@RequestParam(value = "fname") String fname, @RequestParam(value = "lname") String lname)
+	public ResponseEntity<String> sayHello(@RequestParam(value = "fname") String fname, @RequestParam(value = "lname") String lname)
 	{
-		return "Hello " + fname + " " + lname + "!";
+		return new ResponseEntity<String>("Hello " + fname + " " + lname + "!", HttpStatus.OK);
+		//return "Hello " + fname + " " + lname + "!";
 	}
 	
 	//uc3
